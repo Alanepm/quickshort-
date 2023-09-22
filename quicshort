@@ -1,0 +1,31 @@
+Type "help", "copyright", "credits" or "license()" for more information.
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    
+    # Elegir un pivote (usualmente el último elemento)
+    pivot = arr[len(arr) - 1]
+    
+    # Inicializar listas para elementos menores y mayores que el pivote
+    less_than_pivot = []
+    greater_than_pivot = []
+    
+    # Dividir los elementos en las listas de acuerdo al pivote
+    for element in arr[:-1]:
+        if element <= pivot:
+            less_than_pivot.append(element)
+        else:
+            greater_than_pivot.append(element)
+    
+    # Llamar recursivamente a quicksort en las dos sublistas
+    sorted_less = quicksort(less_than_pivot)
+    sorted_greater = quicksort(greater_than_pivot)
+    
+    # Combinar las sublistas ordenadas junto con el pivote
+    return sorted_less + [pivot] + sorted_greater
+
+# Ejemplo de uso:
+my_list = [3, 6, 8, 10, 1, 2, 1]
+sorted_list = quicksort(my_list)
+print(sorted_list)
+
